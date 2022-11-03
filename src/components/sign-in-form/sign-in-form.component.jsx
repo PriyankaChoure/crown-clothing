@@ -15,6 +15,8 @@ const SignInForm = () => {
     const {email, password } = formField;
     // console.log(formField);
 
+    //const { setCurrentUser } = useContext(UserContext);
+
     const resetFormField = () => {
         setFormField(defaultFormField);
     }
@@ -26,8 +28,8 @@ const SignInForm = () => {
     const handleSubmit = async(event) => {
         event.preventDefault();
         try{
-            const response = await signInAuthUserWithEmailAndPassword(email,password);
-            console.log(response);
+            const {user} = await signInAuthUserWithEmailAndPassword(email,password);
+            // setCurrentUser(user);
             resetFormField();
         }catch(err){
             switch (err.code) {
@@ -45,9 +47,7 @@ const SignInForm = () => {
         }
     }
     const signInWithGoogle = async()=> {
-        console.log("inside google sign in")
-        const {user} = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
+         await signInWithGooglePopup();
 
     }
     return (
