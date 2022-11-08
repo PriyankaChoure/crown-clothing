@@ -20,7 +20,7 @@ const CartDropdown = () => {
             <div className='cart-item' >
                 { cartItems.map((item) => <CartItem key={item.key} cartItem ={item}/> )}
             </div>
-            <Button onClick={goToCheckoutHandler} >go to checkout</Button>
+            <Button onClick={goToCheckoutHandler} >Go To Checkout</Button>
         </div>
     );
 
